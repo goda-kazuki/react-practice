@@ -3,7 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 function App() {
+  const { data, error, isLoading } = useSWR(`https://httpbin.org/json`, fetcher)
+
+
+
   const [count, setCount] = useState(0)
 
   return (
